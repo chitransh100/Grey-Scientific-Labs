@@ -1,0 +1,157 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(30, 30, 30, 0.8);
+    color: #fff;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+  }
+  
+  .brand-name {
+    margin-left: 0.5rem;
+    background: linear-gradient(45deg, #00c6ff, #0072ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .nav-right {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #f0f0f0;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #00c6ff;
+  }
+  
+  .cart-link {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  
+  .cart-badge {
+    background-color: #ff4757;
+    color: white;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    margin-left: 0.3rem;
+    font-weight: bold;
+    display: inline-block;
+  }
+  
+  .logout-btn {
+    background: linear-gradient(135deg, #ff6b6b, #f06595);
+    border: none;
+    padding: 0.5rem 1rem;
+    color: white;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .logout-btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #ff4757, #e84393);
+  }
+  
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    cursor: pointer;
+  }
+  
+  .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .bar::before,
+  .bar::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  
+  .bar::before {
+    transform: translateY(-8px);
+  }
+  
+  .bar::after {
+    transform: translateY(8px);
+  }
+  
+  .bar.open {
+    background-color: transparent;
+  }
+  
+  .bar.open::before {
+    transform: rotate(45deg);
+  }
+  
+  .bar.open::after {
+    transform: rotate(-45deg);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hamburger {
+      display: block;
+    }
+  
+    .nav-right {
+      position: absolute;
+      top: 70px;
+      right: 0;
+      background-color: rgba(30, 30, 30, 0.95);
+      width: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1rem 2rem;
+      gap: 1rem;
+      display: none;
+    }
+  
+    .nav-right.open {
+      display: flex;
+    }
+  
+    .nav-link,
+    .logout-btn {
+      width: 100%;
+    }
+  }
+  

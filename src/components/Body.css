@@ -1,0 +1,57 @@
+/* src/components/Body.css */
+
+.body-container {
+    padding: 20px;
+  }
+  
+  .top-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .top-controls input,
+  .top-controls select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+  
+  .card {
+    text-decoration: none;
+    color: inherit;
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: scale(1.03);
+  }
+  
+  .card img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    margin-bottom: 10px;
+  }
+  
+  .card .info h4 {
+    font-size: 14px;
+    margin: 0 0 5px 0;
+  }
+  
+  .card .info p {
+    font-weight: bold;
+    color: #2e8b57;
+  }
+  

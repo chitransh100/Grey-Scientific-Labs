@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #f6f8fc, #e8ecf5);
+  color: #2c3e50;
+  overflow-x: hidden;
+}
+
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  animation: fadeIn 1s ease-in;
+}
+
+.login-box {
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 400px;
+  transition: all 0.3s ease-in-out;
+  animation: slideIn 0.6s ease-in-out;
+}
+
+.login-box:hover {
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.1);
+}
+
+.login-box h2 {
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+  text-align: center;
+  color: #222;
+}
+
+.subhead {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #6c757d;
+  font-size: 0.95rem;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 16px;
+  border: 1px solid #dfe6e9;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.login-box input:focus {
+  border-color: #3f51b5;
+  box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.15);
+  outline: none;
+  transform: scale(1.01);
+}
+
+.login-box button {
+  width: 100%;
+  background: #3f51b5;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.login-box button:hover {
+  background: #2c3e97;
+  transform: scale(1.03);
+}
+
+.login-box button:active {
+  transform: scale(0.98);
+}
+
+.error {
+  background: #ffe2e2;
+  color: #c0392b;
+  padding: 10px;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  text-align: center;
+  animation: popFade 0.4s ease;
+}
+
+.signup-link {
+  margin-top: 1.2rem;
+  font-size: 0.9rem;
+  text-align: center;
+  color: #555;
+}
+
+.signup-link span {
+  color: #3f51b5;
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.signup-link span:hover {
+  color: #2c3e97;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes popFade {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.login-box button[disabled] {
+    background: #a0b5e3;
+    cursor: not-allowed;
+    transform: none;
+  }
+  

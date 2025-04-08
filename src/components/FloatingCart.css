@@ -1,0 +1,30 @@
+.floating-cart {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #0072ff;
+    color: white;
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    z-index: 999;
+    transition: transform 0.2s ease;
+  }
+  
+  .floating-cart:hover {
+    transform: scale(1.05);
+  }
+  
+  .cart-count {
+    background: #ff4757;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 0.25rem 0.6rem;
+    border-radius: 50%;
+  }
+  
