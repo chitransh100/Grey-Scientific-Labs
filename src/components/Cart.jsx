@@ -1,4 +1,3 @@
-// src/components/Cart.jsx
 import { useContext, useState } from "react";
 import { CartContext } from "../context/CardContext";
 import "./Cart.css";
@@ -7,16 +6,19 @@ import { useNavigate } from 'react-router-dom';
 const Cart = () => {
   const { cart, removeFromCart, updateQuantity, clearCart } = useContext(CartContext);
   const [showPopup, setShowPopup] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleCheckout = () => {
     if (cart.length === 0) return;
 
-    setShowPopup(true);
+    setLoading(true); // Show loading
     setTimeout(() => {
-      setShowPopup(false);
-      clearCart();
-    }, 4000);
+      setLoading(false); // Stop loading
+      setShowPopup(true); // Show success
+      clearCart(); // Clear cart
+      setTimeout(() => setShowPopup(false), 3000); // Hide popup after 3s
+    }, 2000); // Simulate loading delay
   };
 
   const total = cart
@@ -80,8 +82,8 @@ const Cart = () => {
 
           <div className="cart-summary">
             <h3>Total: ${total}</h3>
-            <button className="checkout-btn" onClick={handleCheckout}>
-              Checkout
+            <button className="checkout-btn" onClick={handleCheckout} disabled={loading}>
+              {loading ? "Processing..." : "Checkout"}
             </button>
           </div>
         </>

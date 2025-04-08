@@ -155,3 +155,18 @@
     }
   }
   
+  .theme-toggle-btn {
+    padding: 0.4rem 0.8rem;
+    margin-left: 0.5rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: var(--accent-color);
+    color: white;
+    transition: background 0.3s ease;
+  }
+  
+  .theme-toggle-btn:hover {
+    background: var(--accent-color-hover, #5a4dcf);
+  }
+  

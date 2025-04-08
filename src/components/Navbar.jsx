@@ -1,16 +1,18 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CardContext';
+import { useTheme } from '../context/ThemeContext';
 import './Navbar.css';
 import { useState } from 'react';
 
-const Navbar = ({setToken}) => {
+const Navbar = ({ setToken }) => {
   const { cart } = useCart();
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    setToken(null); // <-- notify App to rerender and redirect
+    setToken(null);
     navigate('/login');
   };
 
@@ -30,6 +32,11 @@ const Navbar = ({setToken}) => {
           Cart
           {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
         </Link>
+
+        <button onClick={toggleTheme} className="theme-toggle-btn">
+          {theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}
+        </button>
+
         <button onClick={handleLogout} className="logout-btn">Logout</button>
       </div>
 

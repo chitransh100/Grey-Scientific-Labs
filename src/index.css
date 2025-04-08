@@ -1,0 +1,22 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #111111;
+    --accent-color: #4f46e5;
+    --card-color: #f9f9f9;
+    --success-color: #22c55e;
+  }
+  
+  [data-theme='dark'] {
+    --bg-color: #1e1e1e;
+    --text-color: #f1f1f1;
+    --accent-color: #6366f1;
+    --card-color: #2c2c2c;
+    --success-color: #4ade80;
+  }
+  
+  body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    font-family: sans-serif;
+  }
