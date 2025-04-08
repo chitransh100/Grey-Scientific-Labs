@@ -3,13 +3,14 @@ import { useCart } from '../context/CardContext';
 import './Navbar.css';
 import { useState } from 'react';
 
-const Navbar = () => {
+const Navbar = ({setToken}) => {
   const { cart } = useCart();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
+    setToken(null); // <-- notify App to rerender and redirect
     navigate('/login');
   };
 

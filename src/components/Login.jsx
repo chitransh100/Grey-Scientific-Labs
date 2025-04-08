@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
-const Login = () => {
+const Login = ({setToken}) => {
   const [username, setUsername] = useState('johnd');
   const [password, setPassword] = useState('m38rmF$');
   const [error, setError] = useState('');
@@ -24,6 +24,7 @@ const Login = () => {
 
       if (data.token) {
         localStorage.setItem('token', data.token);
+        setToken(data.token); // <-- notify App to rerender
         navigate('/');
       } else {
         setError('Invalid credentials!');
