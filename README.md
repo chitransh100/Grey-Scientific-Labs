@@ -1,12 +1,65 @@
-# React + Vite
+# 🛒 ShopHere – Front-End Internship Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**ShopHere** is a fully responsive shopping web app built using **React.js** and the **Fake Store API**. It covers all the core requirements of the internship assignment, including login authentication, product listing, cart management, and checkout — along with clean UI and theme toggling (light/dark mode).
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📌 What’s Inside
 
-## Expanding the ESLint configuration
+### ✅ 1. Login Page
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Form with **username** and **password**
+- Authenticates using `/auth/login` endpoint from **Fake Store API**
+- Stores **JWT token** in `localStorage`
+- On success → Redirects to product listing page
+
+### 🛍️ 2. Product Listing Page (Home)
+
+- Fetches and displays all products via `/products`
+- Filter products by category via `/products/category/:category`
+- Optional search bar included
+- Responsive **mobile-first** grid layout
+
+### 🔍 3. Product Detail Page
+
+- Shows full product info:
+  - Image, title, description, price
+- "Add to Cart" button available
+
+### 🛒 4. Cart Page
+
+- Displays products added to cart
+- Allows quantity update and item removal
+- Shows **total price**
+- **Checkout** button:
+  - On click: clears cart and shows a popup message
+  - Message: “Order placed successfully!” (auto disappears after 4 seconds)
+  - Stays on Cart page after checkout
+
+### 🌐 5. Header / Navigation
+
+- Links to **Home**, **Cart**, **Logout**
+- Displays total cart item count
+- **Logout** clears JWT token and redirects to Login
+
+---
+
+## 🧱 Tech Stack
+
+- **React.js** (Vite)
+- **React Router v6+**
+- **React Hooks**
+- **Context API** (for cart & theme state)
+- **Plain CSS** (mobile-first responsive)
+- **Fake Store API** ([Docs](https://fakestoreapi.com/docs))
+
+---
+
+## 💡 Key Concepts & Features
+
+- ✅ `useContext`, `useReducer`, `useEffect`, `useNavigate`
+- 🌗 Dark/Light mode toggle using Theme Context
+- 📦 Cart management with Context API
+- 🔄 Persistent state using `localStorage`
+- 📱 Fully responsive UI with hamburger menu
+- ⏳ Checkout includes loading spinner and popup message
