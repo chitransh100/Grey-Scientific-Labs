@@ -1,21 +1,33 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+// src/components/FloatingCart.jsx
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CardContext';
-import { ShoppingCart } from 'lucide-react'; // if you're using lucide-react or switch to emoji/icon
-import './FloatingCart.css'; // we'll write this next
+import { useEffect, useState } from 'react';
+import './FloatingCart.css';
 
 const FloatingCart = () => {
   const { cart } = useCart();
-  const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
   const navigate = useNavigate();
   const location = useLocation();
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-  // Don't show on login/signup/cart pages
-  const hideOnRoutes = ['/login', '/signup', '/cart'];
-  if (hideOnRoutes.includes(location.pathname)) return null;
+  // Re-check on resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const hideRoutes = ['/login', '/signup', '/cart'];
+  if (hideRoutes.includes(location.pathname) || !isMobile) return null;
+
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <div className="floating-cart" onClick={() => navigate('/cart')}>
-      <ShoppingCart size={20} />
+      🛒
       {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
     </div>
   );

@@ -6,6 +6,7 @@ import Body from './components/Body';
 import Navbar from './components/Navbar';
 import ProductDetail from './components/ProductDetail';
 import Cart from './components/Cart';
+import FloatingCart from './components/FloatingCart'; // ← Import floating cart
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token'));
@@ -30,6 +31,7 @@ function App() {
         <Route path="/cart" element={token ? <Cart /> : <Navigate to="/login" />} />
         <Route path="*" element={<Navigate to={token ? "/" : "/login"} />} />
       </Routes>
+      {token && <FloatingCart />} {/* ⬅ Add FloatingCart here */}
     </Router>
   );
 }

@@ -8,22 +8,34 @@ const Body = () => {
   const [categories, setCategories] = useState([]);
   const [selectedCat, setSelectedCat] = useState('all');
   const [search, setSearch] = useState('');
+  const [loading, setLoading] = useState(false); // <-- loading state added
 
   const fetchProducts = async () => {
-    let url =
-      selectedCat === 'all'
-        ? 'https://fakestoreapi.com/products'
-        : `https://fakestoreapi.com/products/category/${selectedCat}`;
+    setLoading(true); // start loading
+    try {
+      let url =
+        selectedCat === 'all'
+          ? 'https://fakestoreapi.com/products'
+          : `https://fakestoreapi.com/products/category/${selectedCat}`;
 
-    const res = await fetch(url);
-    const data = await res.json();
-    setProducts(data);
+      const res = await fetch(url);
+      const data = await res.json();
+      setProducts(data);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    } finally {
+      setLoading(false); // end loading
+    }
   };
 
   const fetchCategories = async () => {
-    const res = await fetch('https://fakestoreapi.com/products/categories');
-    const data = await res.json();
-    setCategories(data);
+    try {
+      const res = await fetch('https://fakestoreapi.com/products/categories');
+      const data = await res.json();
+      setCategories(data);
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+    }
   };
 
   useEffect(() => {
@@ -61,17 +73,21 @@ const Body = () => {
         </select>
       </div>
 
-      <div className="grid">
-        {filteredProducts.map((product) => (
-          <Link to={`/product/${product.id}`} key={product.id} className="card">
-            <img src={product.image} alt={product.title} />
-            <div className="info">
-              <h4>{product.title.slice(0, 50)}...</h4>
-              <p>${product.price}</p>
-            </div>
-          </Link>
-        ))}
-      </div>
+      {loading ? (
+        <p style={{ padding: '2rem', textAlign: 'center' }}>Loading products...</p>
+      ) : (
+        <div className="grid">
+          {filteredProducts.map((product) => (
+            <Link to={`/product/${product.id}`} key={product.id} className="card">
+              <img src={product.image} alt={product.title} />
+              <div className="info">
+                <h4>{product.title.slice(0, 50)}...</h4>
+                <p>${product.price}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

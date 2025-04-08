@@ -19,7 +19,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="nav-left">
         <Link to="/" className="logo">
-          🛍️ <span className="brand-name">ShopEase</span>
+          <span className="brand-name">ShopHere !!</span>
         </Link>
       </div>
 
